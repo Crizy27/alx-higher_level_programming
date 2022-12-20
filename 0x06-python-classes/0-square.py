@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-"""Empty class Square that defines a square"""
+import sys
 
 
-class Square:
-    """Empty class Square that defines a square"""
-    pass
+def safe_function(fct, *args):
+    try:
+        return fct(*args)
+    except Exception as err:
+        err = "Exception: " + str(err) + "\n"
+        sys.stderr.write(err)
+        return None
