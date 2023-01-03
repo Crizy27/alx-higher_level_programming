@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-Rectangle = __import__('0-rectangle').Rectangle
+# Create a new rectangle with length 3 and width 4
+rect = Rectangle(3, 4)
 
-my_rectangle = Rectangle()
-print(type(my_rectangle))
-print(my_rectangle.__dict__)
+# Print the area of the rectangle
+print(rect.area())  # prints 12
+
+# Print the perimeter of the rectangle
+print(rect.perimeter())  # prints 14
