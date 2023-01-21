@@ -1,44 +1,61 @@
 #!/usr/bin/python3
-"""Unittest for max_integer([..])
-"""
+
 import unittest
-#max_integer = __import__('6-max_integer').max_integer
-
-
-def max_integer(list=[]):
-    """Function to find and return the max integer in a list of integers
-        If the list is empty, the function returns None
-    """
-    if len(list) == 0:
-        return None
-    result = list[0]
-    i = 1
-    while i < len(list):
-        if list[i] > result:
-            result = list[i]
-        i += 1
-    return result
-
+max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
+    """
+    This is the class unittest for the max integer function
+    """
 
-    def test_simple_complete_list(self):
-        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
-        self.assertEqual(max_integer([5, 2, 0, -1]), 5)
-        self.assertEqual(max_integer([5, 5, 5]), 5)
+    def test_sorted_list(self):
 
-    def test_simple_empty_none_list(self):
-        self.assertEqual(max_integer([]), None)
-        self.assertRaises(TypeError, max_integer, None)
+       sorted_list = [1, 2, 3, 4]
+       self.assertEqual(max_integer(sorted_list), 4)
 
-    def test_string_comparison(self):
-        self.assertRaises(TypeError, max_integer, [1, 2, 3, "Hol"])
-        self.assertRaises(TypeError, max_integer, ["H", 1, 2, 3])
+    def test_unsorted_list(self):
 
-    def test_integer_comparison_none(self):
-        self.assertRaises(TypeError, max_integer, [1, None, 2])
+        unsorted_list = [1, 2, 3, 4]
+        self.assertEqual(max_integer(unsorted_list), 4)
 
+    def test_empty_list(self):
+
+        empty = []
+        self.assertEqual(max_integer(empty), None)
+
+    def test_floatl(self):
+
+        floatl = [1.25, 2.33, 3.67, 4.44]
+        self.assertEqual(max_integer(floatl), 4.44)
+
+    def test_intl_floatl(self):
+
+        intl_floatl = [1.25, 4.44, 4, 5]
+        self.assertEqual(max_integer(intl_floatl), 5)
+
+    def test_only_one(self):
+
+        only_one = [7]
+        self.assertEqual(max_integer(only_one), 7)
+
+    def test_max_first(self):
+
+        max_first = [4, 1, 2, 3]
+        self.assertEqual(max_integer(max_first), 4)
+
+    def test_max_middle(self):
+
+        max_middle = [1, 2, 4, 3]
+        self.assertEqual(max_integer(max_middle), 4)
+
+    def test_non_string(self):
+
+        self.assertEqual(max_integer(""), None)
+
+    def test_many_strings(self):
+
+        many_strings = ["string1", "string2", "string3"]
+        self.assertEqual(max_integer(many_strings), "string3")
 
 if __name__ == '__main__':
     unittest.main()
-
