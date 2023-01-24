@@ -1,4 +1,10 @@
 #!/usr/bin/python3
-class Square:
-    """Type class creation of empty class square"""
+"""Square module.
+This module contains a class that defines a square.
+"""
+
+
+class Square():
+    """Defines a square."""
+
     pass
